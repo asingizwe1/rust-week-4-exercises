@@ -32,6 +32,7 @@ impl<T> Point<T> {
 // Custom serialization for Bitcoin transaction
 pub trait BitcoinSerialize {
     fn serialize(&self) -> Vec<u8> {
+        //its only overriden when you want custom logic
         // TODO: Implement serialization to bytes
         Vec::new() //even those that dont override this would return an empty vec
     }
@@ -49,6 +50,12 @@ pub struct LegacyTransaction {
 impl LegacyTransaction {
     pub fn builder() -> LegacyTransactionBuilder {
         // TODO: Return a new builder for constructing a transaction
+        LegacyTransaction {
+            version,
+            inputs,
+            outputs,
+            lock_time,
+        }
     }
 }
 
