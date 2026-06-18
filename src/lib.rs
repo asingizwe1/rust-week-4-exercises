@@ -70,6 +70,13 @@ pub struct LegacyTransactionBuilder {
 impl Default for LegacyTransactionBuilder {
     fn default() -> Self {
         // TODO: Implement default values
+        //empy lists where necessary
+        LegacyTransactionBuilder {
+            version: 1,
+            inputs: Vec::new(),
+            outputs: Vec::new(),
+            lock_time: 0,
+        }
     }
 }
 
