@@ -24,6 +24,8 @@ pub struct Point<T> {
 impl<T> Point<T> {
     pub fn new(x: T, y: T) -> Self {
         // TODO: Implement constructor for Point
+        Point { x, y } //we dont include T coz its a type
+        //T isnt an atual argument we only put actual arguments in constructor defn
     }
 }
 
@@ -31,6 +33,7 @@ impl<T> Point<T> {
 pub trait BitcoinSerialize {
     fn serialize(&self) -> Vec<u8> {
         // TODO: Implement serialization to bytes
+        Vec::new() //even those that dont override this would return an empty vec
     }
 }
 
