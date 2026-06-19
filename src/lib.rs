@@ -193,6 +193,9 @@ impl TryFrom<&[u8]> for LegacyTransaction {
         let input_count = u32::from_le_bytes(data[4..8].try_into().unwrap());
         let output_count = u32::from_le_bytes(data[8..12].try_into().unwrap()); //reading the output
         let lock_time = u32::from_le_bytes(data[12..16].try_into().unwrap());
+        //reserving size in vec
+        let inputs = Vec::with_capacity(input_count as usize);
+        let outputs = Vec::with_capacity(output_count as usize);
     }
 }
 
