@@ -50,12 +50,7 @@ pub struct LegacyTransaction {
 impl LegacyTransaction {
     pub fn builder() -> LegacyTransactionBuilder {
         // TODO: Return a new builder for constructing a transaction
-        LegacyTransaction {
-            version,
-            inputs,
-            outputs,
-            lock_time,
-        }
+        LegacyTransaction::new()
     }
 }
 
@@ -214,6 +209,7 @@ impl BitcoinSerialize for LegacyTransaction {
         let mut out = Vec::new();
         //writing version and lock as little endian
         out.extend_from_slice(&self.version.to_le_bytes());
+        //writing lock as little endian
         out.extend_from_slice(&self.lock_time.to_le_bytes());
         out
     }
