@@ -176,6 +176,11 @@ pub enum CliCommand {
 // Decoding legacy transaction
 impl TryFrom<&[u8]> for LegacyTransaction {
     type Error = BitcoinError;
+    //data layout
+    // 1, 0, 0, 0,   // version (i32) - bytes 0..4
+    // 0, 0, 0, 0,   // inputs count (u32) - bytes 4..8
+    // 0, 0, 0, 0,   // outputs count (u32) - bytes 8..12
+    // 0, 0, 0, 0,   // lock_time (u32) - bytes 12..16
 
     fn try_from(data: &[u8]) -> Result<Self, Self::Error> {
         // TODO: Parse binary data into a LegacyTransaction
