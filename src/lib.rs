@@ -196,6 +196,13 @@ impl TryFrom<&[u8]> for LegacyTransaction {
         //reserving size in vec
         let inputs = Vec::with_capacity(input_count as usize);
         let outputs = Vec::with_capacity(output_count as usize);
+        //struct return
+        Ok(LegacyTransaction {
+            version,
+            inputs,
+            outputs,
+            lock_time,
+        })
     }
 }
 
@@ -203,5 +210,11 @@ impl TryFrom<&[u8]> for LegacyTransaction {
 impl BitcoinSerialize for LegacyTransaction {
     fn serialize(&self) -> Vec<u8> {
         // TODO: Serialize only version and lock_time (simplified)
+        //creating an empty vec
+        let mut out = Vec::new();
+        //writing version and lock as little endian
+        out.extend_from_slice(&self.version.to_le_bytes());
+        out.extend_from_slice(&self.lock_time.to_le_bytes());
+        out
     }
 }
