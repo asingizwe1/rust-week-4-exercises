@@ -1,4 +1,3 @@
-use std::str::FromStr;
 use thiserror::Error;
 
 // Custom errors for Bitcoin operations
@@ -50,7 +49,7 @@ pub struct LegacyTransaction {
 impl LegacyTransaction {
     pub fn builder() -> LegacyTransactionBuilder {
         // TODO: Return a new builder for constructing a transaction
-        LegacyTransaction::new()
+        LegacyTransactionBuilder::new() //builder hides functionality of building so no need to write implementation
     }
 }
 
