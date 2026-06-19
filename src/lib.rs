@@ -188,6 +188,11 @@ impl TryFrom<&[u8]> for LegacyTransaction {
         if data.len() < 16 {
             return Err(BitcoinError::InvalidTransaction);
         } //length
+        let version = i32::from_le_bytes(data[0..4].try_into().unwrap());
+        //reading version
+        let input_count = u32::from_le_bytes(data[4..8].try_into().unwrap());
+        let output_count = u32::from_le_bytes(data[8..12].try_into().unwrap()); //reading the output
+        let lock_time = u32::from_le_bytes(data[12..16].try_into().unwrap());
     }
 }
 
