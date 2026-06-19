@@ -25,7 +25,7 @@ impl<T> Point<T> {
     pub fn new(x: T, y: T) -> Self {
         // TODO: Implement constructor for Point
         Point { x, y } //we dont include T coz its a type
-                       //T isnt an atual argument we only put actual arguments in constructor defn
+        //T isnt an atual argument we only put actual arguments in constructor defn
     }
 }
 
@@ -94,7 +94,7 @@ impl LegacyTransactionBuilder {
 
     pub fn add_input(mut self, input: TxInput) -> Self {
         // TODO: Add input to the transaction
-        self.input = TxInput;
+        self.inputs.push(input); //inputs is a Vec<TxInput>
         self
     }
 
