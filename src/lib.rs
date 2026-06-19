@@ -25,7 +25,7 @@ impl<T> Point<T> {
     pub fn new(x: T, y: T) -> Self {
         // TODO: Implement constructor for Point
         Point { x, y } //we dont include T coz its a type
-        //T isnt an atual argument we only put actual arguments in constructor defn
+                       //T isnt an atual argument we only put actual arguments in constructor defn
     }
 }
 
@@ -83,22 +83,31 @@ impl Default for LegacyTransactionBuilder {
 impl LegacyTransactionBuilder {
     pub fn new() -> Self {
         // TODO: Initialize new builder by calling default
+        LegacyTransactionBuilder::default() //must state whose default you are calling
     }
 
     pub fn version(mut self, version: i32) -> Self {
         // TODO: Set the transaction version
+        self.version = version; //assigning the version to default parameter
+        self
     }
 
     pub fn add_input(mut self, input: TxInput) -> Self {
         // TODO: Add input to the transaction
+        self.input = TxInput;
+        self
     }
 
     pub fn add_output(mut self, output: TxOutput) -> Self {
         // TODO: Add output to the transaction
+        self.output = TxOutput;
+        self
     }
 
     pub fn lock_time(mut self, lock_time: u32) -> Self {
         // TODO: Set lock_time for transaction
+        self.lock_time = lock_time;
+        self
     }
 
     pub fn build(self) -> LegacyTransaction {
