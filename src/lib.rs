@@ -160,6 +160,11 @@ pub fn parse_cli_args(args: &[String]) -> Result<CliCommand, BitcoinError> {
             let address = args[2].clone();
             Ok(CliCommand::Send { amount, address })
         }
+        "balance" => Ok(CliCommand::Balance),
+        _ => Err(BitcoinError::ParseError(format!(
+            "Unknown command: {}",
+            args[0]
+        ))),
     }
 }
 
